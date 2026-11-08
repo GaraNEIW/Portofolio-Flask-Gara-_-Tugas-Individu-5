@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Hasil Pengecekan Username{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow-sm border-0 mt-3">
+    <h3>Hasil Pengecekan Username: <code class="text-primary">{{ username }}</code></h3>
+    
+    <div class="mt-4 fs-5">
+        <!-- Kondisi 1: Karakter kurang dari 4 -->
+        {% if not valid %}
+            <div class="alert alert-warning border-warning">
+                ⚠️ Username <strong>{{ username }}</strong> tidak valid! Panjang minimal 4 karakter.
+            </div>
+            
+        <!-- Kondisi 2: Karakter valid dan nama belum ada di database -->
+        {% elif tersedia %}
+            <div class="alert alert-success border-success">
+                ✅ Username <strong>{{ username }}</strong> masih tersedia untuk digunakan!
+            </div>
+            
+        <!-- Kondisi 3: Karakter valid TAPI nama sudah dipakai -->
+        {% else %}
+            <div class="alert alert-danger border-danger">
+                ❌ Username <strong>{{ username }}</strong> sudah terdaftar dalam sistem.
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mt-4">
+        <a href="{{ url_for('beranda') }}" class="btn btn-outline-primary">← Kembali ke Beranda</a>
+    </div>
+</div>
+{% endblock %}

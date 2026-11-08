@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}404 - Tidak Ditemukan{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-1 fw-bold text-danger">404</h1>
+    <h2>Halaman Tidak Ditemukan</h2>
+    <p class="text-muted mt-3">Maaf, halaman atau ID proyek yang Anda cari tidak ada di sistem.</p>
+    <a href="{{ url_for('beranda') }}" class="btn btn-primary mt-3">Kembali ke Beranda</a>
+</div>
+{% endblock %}

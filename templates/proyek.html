@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Daftar Proyek{% endblock %}
+
+{% block content %}
+<h2>Portofolio Proyek Saya</h2>
+<p>Berikut adalah beberapa proyek dan tugas teknis yang pernah saya kerjakan.</p>
+
+<table class="table table-striped mt-3 bg-white shadow-sm border">
+    <thead class="table-dark">
+        <th>Aksi</th> 
+        <tr>
+            <th>No</th>
+            <th>Judul Proyek</th>
+            <th>Kategori</th>
+            <th>Tahun</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Memulai Perulangan (Looping) Data -->
+        {% for id, p in data_proyek.items() %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ p.judul | upper }}</td>
+            <td>{{ p.kategori }}</td>
+            <td>{{ p.tahun }}</td>
+            <td>
+                <!-- Percabangan (If) sederhana untuk warna status -->
+                {% if p.status == 'Selesai' %}
+                    <span class="badge bg-success">{{ p.status }}</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark">{{ p.status }}</span>
+                {% endif %}
+            
+            </td>
+</td>
+<td>
+    <a href="{{ url_for('detail_proyek', id=id) }}" class="btn btn-sm btn-info text-white">Detail</a>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

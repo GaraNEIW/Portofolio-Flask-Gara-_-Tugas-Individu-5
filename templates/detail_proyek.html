@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Detail Proyek - {{ item.judul }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm border-0 mt-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="card-title text-primary">{{ item.judul }}</h2>
+            <span class="badge bg-secondary fs-5">{{ item.kategori }}</span>
+        </div>
+        <hr>
+        <p class="fs-5 mt-3">Ini adalah halaman detail untuk proyek ID: <strong>{{ id }}</strong>.</p>
+        
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>Tahun Pengerjaan:</strong> {{ item.tahun }}</li>
+            <li class="list-group-item"><strong>Status:</strong> {{ item.status }}</li>
+        </ul>
+        
+        <div class="mt-4">
+            <!-- Tombol kembali menggunakan url_for -->
+            <a href="{{ url_for('daftar_proyek') }}" class="btn btn-outline-secondary">← Kembali ke Daftar Proyek</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

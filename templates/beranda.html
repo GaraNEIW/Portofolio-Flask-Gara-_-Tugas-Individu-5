@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Beranda - {{ nama }}{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <h1 class="display-5 fw-bold text-primary">Halo, Saya {{ nama }}!</h1>
+    <p class="fs-5 text-secondary">{{ peran }}</p>
+    <hr class="my-4">
+    <p>Selamat datang di web personal portofolio saya. Ini adalah halaman utama.</p>
+
+    <!-- Form Cek Username Client -->
+    <div class="card p-4 mt-4 bg-light border-0 shadow-sm">
+        <h5 class="card-title text-dark mb-3">Cek Ketersediaan Username Client</h5>
+        
+        <!-- Form mengirim data ke fungsi cek_query di app.py -->
+        <form action="{{ url_for('cek_query') }}" method="get" class="row g-2">
+            <div class="col-md-6 col-sm-8">
+                <!-- Atribut name="u" adalah kunci untuk ditangkap oleh request.args.get("u") -->
+                <input type="text" name="u" class="form-control form-control-lg" placeholder="Ketik nama (misal: ikmal)..." required>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary btn-lg">Cek Ketersediaan</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+{% endblock %}
